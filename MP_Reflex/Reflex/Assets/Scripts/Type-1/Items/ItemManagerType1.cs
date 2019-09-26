@@ -49,11 +49,7 @@ public class ItemManagerType1 : MonoBehaviour
             zPos = Random.Range (5, 8);
             
             if (oldTime <= 3.0f) {
-                clone = Instantiate (item, new Vector3 (xPos, -5, zPos), Quaternion.identity);
-            } else if (oldTime<= 4.0f){
-                clone = Instantiate (item, new Vector3 (xPos, -5, zPos), Quaternion.identity);
-            } else {
-                clone = Instantiate (item, new Vector3 (xPos, -5, zPos), Quaternion.identity);
+                clone = Instantiate (item, new Vector3 (xPos, -5, zPos), Quaternion.Euler(0, 0, 0));
             }
 
             yield return new WaitForSeconds (0.5f);
