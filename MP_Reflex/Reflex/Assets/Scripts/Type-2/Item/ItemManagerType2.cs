@@ -6,9 +6,7 @@ public class ItemManagerType2 : MonoBehaviour {
 
     public GameObject item;
     private GameObject clone;
-    private int xPos;
-    private int zPos;
-    private int yPos;
+    private Vector3 randPos;
     private bool itemSpawned;
 
     private float timer;
@@ -46,15 +44,14 @@ public class ItemManagerType2 : MonoBehaviour {
                 addTime = 0.1f;
             }
             if (oldTime > 3.0f) {
-                clone = Instantiate (item, new Vector3 (xPos, yPos, zPos), Quaternion.identity);
+                clone = Instantiate (item, randPos, Quaternion.identity);
                 clone.GetComponent<Rigidbody> ().useGravity = false;
             }
 
-            xPos = Random.Range (-4, 4);
-            zPos = Random.Range (8, 10);
-            yPos = Random.Range (-4 , 4);
+            randPos = Camera.main.ViewportToWorldPoint (
+            new Vector3 (Random.Range (0.1f, 0.9f), Random.Range (0.1f, 0.9f), 10f));
 
-            clone = Instantiate (item, new Vector3 (xPos, yPos, zPos), Quaternion.identity);
+            clone = Instantiate (item, randPos, Quaternion.identity);
             clone.GetComponent<Rigidbody> ().useGravity = false;
 
             yield return new WaitForSeconds (0.5f);

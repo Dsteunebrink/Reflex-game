@@ -8,6 +8,7 @@ public class ItemManagerType1 : MonoBehaviour
     private GameObject clone;
     private int xPos;
     private int zPos;
+    private Vector3 randPos;
     
     private int itemCount;
     private bool itemSpawned;
@@ -47,14 +48,15 @@ public class ItemManagerType1 : MonoBehaviour
 
             xPos = Random.Range (-4, 4);
             zPos = Random.Range (5, 8);
-            
-            if (oldTime <= 3.0f) {
-                clone = Instantiate (item, new Vector3 (xPos, -5, zPos), Quaternion.Euler(0, 0, 0));
-            }
 
+            randPos = Camera.main.ViewportToWorldPoint (new Vector3 (Random.Range (0.1f, 0.9f), Random.Range (0.1f, 0.9f), 10f));
+            
+            Debug.Log (randPos);
+            clone = Instantiate (item, randPos, Quaternion.identity);
+            clone.transform.position = new Vector3 (clone.transform.position.x, -6f, 10f);
+             
             yield return new WaitForSeconds (0.5f);
             itemCount += 1;
-
         }
     }
 
