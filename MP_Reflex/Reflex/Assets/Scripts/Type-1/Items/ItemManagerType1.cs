@@ -6,11 +6,8 @@ public class ItemManagerType1 : MonoBehaviour
 {
     public GameObject item;
     private GameObject clone;
-    private int xPos;
-    private int zPos;
     private Vector3 randPos;
     
-    private int itemCount;
     private bool itemSpawned;
 
     private float timer;
@@ -46,23 +43,17 @@ public class ItemManagerType1 : MonoBehaviour
                 addTime = 0.1f;
             }
 
-            xPos = Random.Range (-4, 4);
-            zPos = Random.Range (5, 8);
-
             randPos = Camera.main.ViewportToWorldPoint (new Vector3 (Random.Range (0.1f, 0.9f), Random.Range (0.1f, 0.9f), 10f));
             
-            Debug.Log (randPos);
             clone = Instantiate (item, randPos, Quaternion.identity);
             clone.transform.position = new Vector3 (clone.transform.position.x, -6f, 10f);
              
             yield return new WaitForSeconds (0.5f);
-            itemCount += 1;
         }
     }
 
     private void OnTriggerEnter (Collider other) {
         if (other.CompareTag ("Item")) {
-            itemCount -= 1;
             healthMan.MinusHealth ();
             Destroy (other.gameObject);
         }

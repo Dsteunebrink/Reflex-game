@@ -33,9 +33,6 @@ public class ItemVel : MonoBehaviour
     }
 
     private void Update () {
-        //Vector3 dir = this.GetComponent<Rigidbody>().velocity;
-        //float angle = Mathf.Atan2 (dir.y, dir.x) * Mathf.Rad2Deg;
-        //transform.rotation = Quaternion.AngleAxis (angle, Vector3.forward);
         transform.position += transform.forward * Time.deltaTime;
     }
 }

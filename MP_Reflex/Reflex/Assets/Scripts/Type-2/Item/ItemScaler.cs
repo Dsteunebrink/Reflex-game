@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ItemScaler : MonoBehaviour
 {
-    public int ItemCount = 1;
+
     private float timer;
 
     private HealthManager healthMan;
@@ -49,8 +49,7 @@ public class ItemScaler : MonoBehaviour
             currentTime += Time.deltaTime;
             yield return null;
         } while (currentTime <= time);
-
-        ItemCount--;
+        
         healthMan.MinusHealth ();
         Destroy (gameObject);
     }
