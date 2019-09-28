@@ -9,6 +9,10 @@ public class ItemVel : MonoBehaviour
     private Vector3 angVel = new Vector3(10, 0, 0);
     private ItemManagerType1 manTime;
 
+    private bool right = false;
+    private bool left = false;
+    private bool caseDone = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +37,26 @@ public class ItemVel : MonoBehaviour
     }
 
     private void Update () {
-        transform.position += transform.forward * Time.deltaTime;
+        
+        /*if (caseDone == false) {
+            switch (Random.Range (0, 2)) {
+                case 0: right = true; break;
+                case 1: left = true; break;
+            }
+        }*/
+
+        if(this.transform.position.x <= 5.61 && caseDone == false) {
+            right = true;
+        } else if (this.transform.position.x >= 5.61 && caseDone == false) {
+            left = true;
+        }
+
+        if (right == true) {
+            transform.position += transform.right * Time.deltaTime;
+            caseDone = true;
+        } else if (left == true) {
+            transform.position -= transform.right * Time.deltaTime;
+            caseDone = true;
+        }
     }
 }
