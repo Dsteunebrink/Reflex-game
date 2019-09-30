@@ -11,7 +11,9 @@ public class TimedClick : MonoBehaviour
     private GameObject Item;
 
     public Text timeText;
+    private Text finTimeText;
     public GameObject lateUI;
+    public GameObject finishedUI;
     private Button retryButton;
 
     private bool ItemActive;
@@ -50,6 +52,15 @@ public class TimedClick : MonoBehaviour
         if (Input.GetMouseButtonDown (0)) {
             if (Physics.Raycast (ray, out hit)) {
                 if (hit.transform.CompareTag ("Item")) {
+                    Instantiate (finishedUI);
+
+                    retryButton = GameObject.Find ("FinRetryButton").GetComponent<Button> ();
+                    retryButton.onClick.AddListener (retry);
+
+                    finTimeText = GameObject.Find ("FinTimeText").GetComponent<Text> ();
+                    timer = Mathf.Round (timer * 1000f) / 1000f;
+                    finTimeText.text = "Time:" + timer;
+                    
                     greenLightDone = false;
                     Destroy (hit.transform.gameObject);
                 }
