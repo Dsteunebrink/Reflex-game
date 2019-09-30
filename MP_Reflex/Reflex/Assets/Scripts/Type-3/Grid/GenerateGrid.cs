@@ -27,7 +27,7 @@ public class GenerateGrid : MonoBehaviour
 
         for(int i = 0; i < columns; i++) {
 
-            for (int j = 0; j<rows; j++) {
+            for (int j = 0; j < rows; j++) {
 
                 instantiateRandom = numbersToChooseFrom[Random.Range (0, numbersToChooseFrom.Count)];
                 numbersToChooseFrom.Remove (instantiateRandom);
