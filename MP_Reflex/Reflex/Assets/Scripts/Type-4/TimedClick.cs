@@ -12,6 +12,7 @@ public class TimedClick : MonoBehaviour
 
     public Text timeText;
     public GameObject lateUI;
+    private Button retryButton;
 
     private bool ItemActive;
 
@@ -35,7 +36,10 @@ public class TimedClick : MonoBehaviour
         }
         if (timer >= 3) {
             greenLightDone = false;
-            lateUI.SetActive (true);
+            Instantiate (lateUI);
+            retryButton = GameObject.Find ("RetryButton").GetComponent<Button> ();
+            retryButton.onClick.AddListener (retry);
+            timer = 0;
         }
     }
 
@@ -51,5 +55,10 @@ public class TimedClick : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void retry () {
+        Time.timeScale = 1;
+        SceneManager.LoadSceneAsync (SceneManager.GetActiveScene ().name);
     }
 }
