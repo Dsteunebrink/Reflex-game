@@ -25,21 +25,21 @@ public class HealthManager : MonoBehaviour
         if (health <= 0 && instantiateDone == false) {
             Instantiate (endPrefab);
             retryButton = GameObject.Find ("RetryButton").GetComponent<Button> ();
-            retryButton.onClick.AddListener (retry);
+            retryButton.onClick.AddListener (Retry);
             Time.timeScale = 0;
             instantiateDone = true;
         }
     }
 
-    public void MinusHealth () {
-        health--;
+    public void MinusHealth (int i) {
+        health -= i;
     }
 
-    public void PlusHealth () {
-        health++;
+    public void PlusHealth (int j) {
+        health -= j;
     }
 
-    private void retry () {
+    private void Retry () {
         Time.timeScale = 1;
         SceneManager.LoadSceneAsync (SceneManager.GetActiveScene ().name);
     }

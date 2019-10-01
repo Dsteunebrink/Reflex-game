@@ -50,7 +50,7 @@ public class ItemScaler : MonoBehaviour
             yield return null;
         } while (currentTime <= time);
         
-        healthMan.MinusHealth ();
+        healthMan.MinusHealth (1);
         Destroy (gameObject);
     }
 }

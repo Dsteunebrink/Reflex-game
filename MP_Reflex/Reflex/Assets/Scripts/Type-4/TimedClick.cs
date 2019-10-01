@@ -40,7 +40,7 @@ public class TimedClick : MonoBehaviour
             greenLightDone = false;
             Instantiate (lateUI);
             retryButton = GameObject.Find ("RetryButton").GetComponent<Button> ();
-            retryButton.onClick.AddListener (retry);
+            retryButton.onClick.AddListener (Retry);
             timer = 0;
         }
     }
@@ -52,14 +52,14 @@ public class TimedClick : MonoBehaviour
         if (Input.GetMouseButtonDown (0)) {
             if (Physics.Raycast (ray, out hit)) {
                 if (hit.transform.CompareTag ("Item")) {
+                    Time.timeScale = 0;
                     Instantiate (finishedUI);
-
                     retryButton = GameObject.Find ("FinRetryButton").GetComponent<Button> ();
-                    retryButton.onClick.AddListener (retry);
+                    retryButton.onClick.AddListener (Retry);
 
                     finTimeText = GameObject.Find ("FinTimeText").GetComponent<Text> ();
                     timer = Mathf.Round (timer * 1000f) / 1000f;
-                    finTimeText.text = "Time:" + timer;
+                    finTimeText.text = "Time: " + timer;
                     
                     greenLightDone = false;
                     Destroy (hit.transform.gameObject);
@@ -68,7 +68,7 @@ public class TimedClick : MonoBehaviour
         }
     }
 
-    private void retry () {
+    private void Retry () {
         Time.timeScale = 1;
         SceneManager.LoadSceneAsync (SceneManager.GetActiveScene ().name);
     }

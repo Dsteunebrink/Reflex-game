@@ -55,7 +55,7 @@ public class ItemManagerType1 : MonoBehaviour
 
     private void OnTriggerEnter (Collider other) {
         if (other.CompareTag ("Item")) {
-            healthMan.MinusHealth ();
+            healthMan.MinusHealth (1);
             Destroy (other.gameObject);
         }
     }

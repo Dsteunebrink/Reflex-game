@@ -24,7 +24,7 @@ public class ClickManager : MonoBehaviour
                     Destroy (hit.transform.gameObject);
                 }
             } else {
-                healthMan.MinusHealth ();
+                healthMan.MinusHealth (1);
             }
         }
     }
