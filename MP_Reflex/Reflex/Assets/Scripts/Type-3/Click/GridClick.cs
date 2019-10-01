@@ -73,7 +73,7 @@ public class GridClick : MonoBehaviour
     }
 
     private void Retry () {
-        //when the retry is clicked reset scene.
+        //When the retry is clicked reset scene.
         Time.timeScale = 1;
         SceneManager.LoadSceneAsync (SceneManager.GetActiveScene ().name);
     }
