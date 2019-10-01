@@ -9,7 +9,7 @@ public class ItemManagerType1 : MonoBehaviour
     private GameObject clone;
     private Vector3 randPos;
     
-    //Boolean to set for when the itemSpawned
+    //Boolean to set for when the itemSpawned.
     private bool itemSpawned;
 
     //Timer to check when to spawn the next clone. oldtime to check how long it took to spawn the last clone. Addtime to add to the timer so the clone spawns faster everytime.
@@ -48,12 +48,12 @@ public class ItemManagerType1 : MonoBehaviour
         //Check if there are too many items in the scene.
         if (GameObject.FindGameObjectsWithTag ("Item").Length < 10) {
 
-            //make addtime lesser if the last one is already spawning fast.
+            //Make addtime lesser if the last one is already spawning fast.
             if (oldTime == 4.4f) {
                 addTime = 0.1f;
             }
 
-            //make a random pos.
+            //Make a random pos.
             randPos = Camera.main.ViewportToWorldPoint (new Vector3 (Random.Range (0.1f, 0.9f), Random.Range (0.1f, 0.9f), 10f));
             
             //Spawn item  on random pos
