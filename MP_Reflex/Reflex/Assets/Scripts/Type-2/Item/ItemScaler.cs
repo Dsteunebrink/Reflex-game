@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class ItemScaler : MonoBehaviour
 {
-    //Variable for health manager to change health manager
+    //Variable for health manager to change health manager.
     private HealthManager healthMan;
 
-    // Start is called before the first frame update
+    // Start is called before the first frame update.
     void Start()
     {
         //Find healthmanager in scene
@@ -26,7 +26,7 @@ public class ItemScaler : MonoBehaviour
     }
 
     IEnumerator UpScalingOverTime (float time) {
-        //Save the scale before we start scaling and set a scale where we want to stop scaling,
+        //Save the scale before we start scaling and set a scale where we want to stop scaling.
         Vector3 originalScale = this.transform.localScale;
         Vector3 destinationScale = new Vector3 (1.5f, 1.5f, 1.5f);
 
@@ -45,11 +45,11 @@ public class ItemScaler : MonoBehaviour
     }
 
     IEnumerator DownScalingOverTime (float time) {
-        //Save the scale before we start scaling and set a scale where we want to stop scaling,
+        //Save the scale before we start scaling and set a scale where we want to stop scaling.
         Vector3 originalScale = this.transform.localScale;
         Vector3 destinationScale = new Vector3 (0, 0, 0);
 
-        //Currenttime to check when to stop scaling
+        //Currenttime to check when to stop scaling.
         float currentTime = 0.0f;
 
         //Scale the item till its on the max scale we set at the beginning.
