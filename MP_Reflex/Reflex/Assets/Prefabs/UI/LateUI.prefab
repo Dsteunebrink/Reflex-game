@@ -313,7 +313,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'You we''re too late.
+  m_Text: 'You are too late.
 
     Try again'
 --- !u!1 &6973217817499909390

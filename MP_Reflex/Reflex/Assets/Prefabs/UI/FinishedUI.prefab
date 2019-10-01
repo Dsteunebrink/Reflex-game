@@ -435,7 +435,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'You we''er on time.
+  m_Text: 'You are on time.
 
     Your time is:'
 --- !u!1 &7481782571922218467
