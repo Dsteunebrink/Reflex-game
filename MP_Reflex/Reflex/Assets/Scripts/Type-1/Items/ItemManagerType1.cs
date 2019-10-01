@@ -18,6 +18,7 @@ public class ItemManagerType1 : MonoBehaviour
 
     void Start () {
         healthMan = GameObject.Find ("HealthManager").GetComponent<HealthManager> ();
+        Physics.gravity = new Vector3 (0f, -9.8f, 0f);
     }
 
     private void Update () {
