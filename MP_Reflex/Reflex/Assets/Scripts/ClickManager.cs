@@ -18,13 +18,15 @@ public class ClickManager : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
         RaycastHit hit;
 
-        if (Input.GetMouseButtonDown (0)) {
-            if (Physics.Raycast (ray, out hit)) {
-                if (hit.transform.CompareTag ("Item")) {
-                    Destroy (hit.transform.gameObject);
+        if(Time.timeScale == 0) {
+            if (Input.GetMouseButtonDown (0)) {
+                if (Physics.Raycast (ray, out hit)) {
+                    if (hit.transform.CompareTag ("Item")) {
+                        Destroy (hit.transform.gameObject);
+                    }
+                } else {
+                    healthMan.MinusHealth (1);
                 }
-            } else {
-                healthMan.MinusHealth (1);
             }
         }
     }

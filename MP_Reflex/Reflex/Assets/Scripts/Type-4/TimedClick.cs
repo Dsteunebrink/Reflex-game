@@ -56,22 +56,24 @@ public class TimedClick : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
         RaycastHit hit;
 
-        if (Input.GetMouseButtonDown (0)) {
-            if (Physics.Raycast (ray, out hit)) {
-                if (hit.transform.CompareTag ("Item")) {
-                    //Spawn the UI and give the retry button use.
-                    Time.timeScale = 0;
-                    Instantiate (finishedUI);
-                    retryButton = GameObject.Find ("FinRetryButton").GetComponent<Button> ();
-                    retryButton.onClick.AddListener (Retry);
+        if (Time.timeScale == 0) {
+            if (Input.GetMouseButtonDown (0)) {
+                if (Physics.Raycast (ray, out hit)) {
+                    if (hit.transform.CompareTag ("Item")) {
+                        //Spawn the UI and give the retry button use.
+                        Time.timeScale = 0;
+                        Instantiate (finishedUI);
+                        retryButton = GameObject.Find ("FinRetryButton").GetComponent<Button> ();
+                        retryButton.onClick.AddListener (Retry);
 
-                    //Add the time the player has done over this type to the UI.
-                    finTimeText = GameObject.Find ("FinTimeText").GetComponent<Text> ();
-                    timer = Mathf.Round (timer * 1000f) / 1000f;
-                    finTimeText.text = "Time: " + timer;
-                    
-                    greenLightDone = false;
-                    Destroy (hit.transform.gameObject);
+                        //Add the time the player has done over this type to the UI.
+                        finTimeText = GameObject.Find ("FinTimeText").GetComponent<Text> ();
+                        timer = Mathf.Round (timer * 1000f) / 1000f;
+                        finTimeText.text = "Time: " + timer;
+
+                        greenLightDone = false;
+                        Destroy (hit.transform.gameObject);
+                    }
                 }
             }
         }

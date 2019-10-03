@@ -43,29 +43,31 @@ public class GridClick : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
         RaycastHit hit;
 
-        //Check when the mouse is hitting the good grid number otherwis take away a bit health.
-        if (Input.GetMouseButtonDown (0)) {
-            if (Physics.Raycast (ray, out hit)) {
-                if (hit.transform.CompareTag ("Item")) {
-                    if(hit.transform.name == gridPrefab.prefabList[currentNumber].name) {
-                        Destroy (hit.transform.gameObject);
-                        //Check if player clicked the last number in the grid. otherwise count the number up.
-                        if (currentNumber == 15) {
-                            //Last number is clicked spawn the UI and give the retry button use.
-                            Time.timeScale = 0;
-                            Instantiate (FinishedUI);
-                            retryButton = GameObject.Find ("FinRetryButton").GetComponent<Button> ();
-                            retryButton.onClick.AddListener (Retry);
+        if (Time.timeScale == 0) {
+            //Check when the mouse is hitting the good grid number otherwis take away a bit health.
+            if (Input.GetMouseButtonDown (0)) {
+                if (Physics.Raycast (ray, out hit)) {
+                    if (hit.transform.CompareTag ("Item")) {
+                        if (hit.transform.name == gridPrefab.prefabList[currentNumber].name) {
+                            Destroy (hit.transform.gameObject);
+                            //Check if player clicked the last number in the grid. otherwise count the number up.
+                            if (currentNumber == 15) {
+                                //Last number is clicked spawn the UI and give the retry button use.
+                                Time.timeScale = 0;
+                                Instantiate (FinishedUI);
+                                retryButton = GameObject.Find ("FinRetryButton").GetComponent<Button> ();
+                                retryButton.onClick.AddListener (Retry);
 
-                            //Add the time the player has done over this type to the UI.
-                            finTimeText = GameObject.Find ("FinTimeText").GetComponent<Text> ();
-                            timer = Mathf.Round (timer * 100f) / 100f;
-                            finTimeText.text = "Time: " + timer;
+                                //Add the time the player has done over this type to the UI.
+                                finTimeText = GameObject.Find ("FinTimeText").GetComponent<Text> ();
+                                timer = Mathf.Round (timer * 100f) / 100f;
+                                finTimeText.text = "Time: " + timer;
+                            } else {
+                                currentNumber++;
+                            }
                         } else {
-                            currentNumber++;
+                            healthMan.MinusHealth (1);
                         }
-                    } else {
-                        healthMan.MinusHealth(1);
                     }
                 }
             }
