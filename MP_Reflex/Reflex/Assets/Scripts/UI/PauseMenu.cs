@@ -58,4 +58,15 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadSceneAsync ("Main_Menu");
     }
+
+    public void ShowPanel () {
+        if (pauseMenuPanel.activeInHierarchy == false) {
+            pauseMenuPanel.SetActive (true);
+            Time.timeScale = 0;
+        } else if (pauseMenuPanel != null) {
+            pauseMenuPanel.SetActive (false);
+            optionsMenuPanel.SetActive (false);
+            Time.timeScale = 1;
+        }
+    }
 }

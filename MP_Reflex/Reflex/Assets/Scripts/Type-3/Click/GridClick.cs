@@ -43,7 +43,7 @@ public class GridClick : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
         RaycastHit hit;
 
-        if (Time.timeScale == 0) {
+        if (Time.timeScale == 1) {
             //Check when the mouse is hitting the good grid number otherwis take away a bit health.
             if (Input.GetMouseButtonDown (0)) {
                 if (Physics.Raycast (ray, out hit)) {

@@ -33,7 +33,7 @@ public class TimedClick : MonoBehaviour
         //If the green light is lit start the timer and show it on the text. and activate the item.
         if (greenLightDone == true) {
             timer += Time.deltaTime;
-            timer = Mathf.Round (timer * 1000f) / 1000f;
+            //timer = Mathf.Round (timer * 1000f) / 1000f;
             timeText.text = "Time:" + timer;
             if (ItemActive == false) {
                 Item.SetActive (true);
@@ -56,7 +56,7 @@ public class TimedClick : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
         RaycastHit hit;
 
-        if (Time.timeScale == 0) {
+        if (Time.timeScale == 1) {
             if (Input.GetMouseButtonDown (0)) {
                 if (Physics.Raycast (ray, out hit)) {
                     if (hit.transform.CompareTag ("Item")) {

@@ -18,7 +18,7 @@ public class ClickManager : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
         RaycastHit hit;
 
-        if(Time.timeScale == 0) {
+        if(Time.timeScale == 1) {
             if (Input.GetMouseButtonDown (0)) {
                 if (Physics.Raycast (ray, out hit)) {
                     if (hit.transform.CompareTag ("Item")) {
